@@ -1,8 +1,8 @@
 import random
 def main():
-    seikai = syutudai()
+    seikai = shutsudai()
     kaito(seikai) 
-def syutudai():
+def shutsudai():
     mondai = [{"q":"サザエの旦那の名前は？","a":["マスオ", "ますお"]}, 
               {"q":"カツオの妹の名前は？", "a":["ワカメ", "わかめ"]}, 
               {"q":"タラオから見てカツオはどんな関係？", "a":["甥っ子", "おいっこ", "甥", "おい"]}]
@@ -17,3 +17,6 @@ def kaito(seikai):
         print("正解")
     else:
         print("不正解")
+
+if __name__ == "__main__":
+    main()
