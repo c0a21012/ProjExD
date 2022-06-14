@@ -5,15 +5,15 @@ kesson = 2
 max = 2
 
 def main():
-    seikai = shutsudai()
+    seikai = set(shutsudai())
     for i in range(max):
         kaito()
-        if set(seikai) == set(kaito()):
+        if seikai == kaito():
             print("正解")
             break
-        elif set(seikai) != set(kaito()):
+        elif seikai != kaito():
             print("もう一度")
-        elif i == max-1 and set(seikai) != set(kaito()):
+        elif i == max-1 and seikai != kaito():
             print("残念でした")
 
 def shutsudai():
@@ -35,10 +35,9 @@ def kaito():
     ans = input("欠損文字は何個?")
     if ans != kesson:
         print("不正解")
-        return 0
     else:
         print("正解。具体的に何が欠損したか一文字ずつ入力せよ")
         for i in range(kesson):
             a = input(f"{i}個目の欠損文字")
             kotae.appned(a)
-    return kotae        
+    return set(kotae)        
