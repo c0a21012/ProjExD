@@ -5,12 +5,20 @@ import tkinter.messagebox as tkm
 def button_click(event):
     btn = event.widget
     n = btn["text"]
-    tkm.showinfo("",f"{n}ボタン押された")
-
+    #tkm.showinfo("",f"{n}ボタン押された")
+    entry.insert(tk.END, n)
 if __name__ == "__main__":
     root = tk.Tk()
-    root.geometry("300x500")
+    #root.geometry("300x500")
     root.title("電卓")
+
+    entry = tk.Entry(root, 
+                    justify="right", 
+                    width=10, 
+                    font=("Times New Roman",40)
+                    )
+    entry.grid(row=0, column=0, columnspan=3)
+
     r, c = 0, 0
     for n in range(9, -1, -1):
         btn = tk.Button(root, 
