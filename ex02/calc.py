@@ -11,10 +11,12 @@ def button_click(event):
         res = eval(eq)
         entry.delete(0, tk.END)
         entry.insert(tk.END, res)
-    elif n == "sin":
+
+    #三角関数の計算は角度(度数法）を入力
+    elif n == "sin": 
         get = entry.get()
         ans = eval(get)
-        sin = math.sin(math.radians(ans))
+        sin = math.sin(math.radians(ans))    
         entry.delete(0, tk.END)
         entry.insert(tk.END, sin)
     elif n == "cos":
@@ -29,6 +31,7 @@ def button_click(event):
         tan = math.tan(math.radians(ans))
         entry.delete(0, tk.END)
         entry.insert(tk.END, tan)
+        
     else:
         entry.insert(tk.END, n)
 
