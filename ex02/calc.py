@@ -2,6 +2,7 @@ from calendar import c
 import tkinter as tk
 import tkinter.messagebox as tkm
 import math
+
 def button_click(event):
     btn = event.widget
     n = btn["text"]
@@ -30,7 +31,10 @@ def button_click(event):
         tan = math.tan(math.radians(ans))
         entry.delete(0, tk.END)
         entry.insert(tk.END, round(tan, 3))
-        
+    elif n == "A":
+        entry.delete(0, tk.END)
+    
+
     else:
         entry.insert(tk.END, n)
 
@@ -50,7 +54,7 @@ if __name__ == "__main__":
     entry.grid(row=0, column=0, columnspan=3)
 
     r, c = 2, 0
-    for i, n in enumerate([i for i in range(9, -1, -1)] + ["+", "-", "*", "/", "sin","cos", "tan","="]):
+    for i, n in enumerate([i for i in range(9, -1, -1)] + ["+","-", "*", "/", "sin","cos", "tan", "A", "="]):
         btn = tk.Button(root, 
                         text=f"{n}", 
                         width=4, 
