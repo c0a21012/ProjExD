@@ -1,7 +1,7 @@
 from calendar import c
 import tkinter as tk
 import tkinter.messagebox as tkm
-
+import math
 def button_click(event):
     btn = event.widget
     n = btn["text"]
@@ -11,6 +11,25 @@ def button_click(event):
         entry.delete(0, tk.END)
         entry.insert(tk.END, res)
 
+    #三角関数の計算は角度(度数法）を入力
+    elif n == "sin": 
+        get = entry.get()
+        ans = eval(get)
+        sin = math.sin(math.radians(ans))    
+        entry.delete(0, tk.END)
+        entry.insert(tk.END, round(sin, 3))
+    elif n == "cos":
+        get = entry.get()
+        ans = eval(get)
+        cos = math.cos(math.radians(ans))
+        entry.delete(0, tk.END)
+        entry.insert(tk.END, round(cos, 3))
+    elif n == "tan":
+        get = entry.get()
+        ans = eval(get)
+        tan = math.tan(math.radians(ans))
+        entry.delete(0, tk.END)
+        entry.insert(tk.END, round(tan, 3))
     
     else:
         entry.insert(tk.END, n)
@@ -31,7 +50,7 @@ if __name__ == "__main__":
     entry.grid(row=0, column=0, columnspan=3)
 
     r, c = 2, 0
-    for i, n in enumerate([i for i in range(9, -1, -1)] + ["+", "="]):
+    for i, n in enumerate([i for i in range(9, -1, -1)] + ["+", "-", "*", "/", "sin","cos", "tan", "="]):
         btn = tk.Button(root, 
                         text=f"{n}", 
                         width=4, 
@@ -41,7 +60,7 @@ if __name__ == "__main__":
         btn.bind("<1>", button_click)
         btn.grid(row=r, column=c)
         c += 1
-        if (i+1) % 3 == 0:
+        if (i+1) % 5 == 0:
             r += 1
             c = 0
         
