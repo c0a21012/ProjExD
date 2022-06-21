@@ -19,7 +19,7 @@ if __name__ == "__main__":
                     )
     entry.grid(row=0, column=0, columnspan=3)
 
-    r, c = 0, 0
+    r, c = 2, 0
     for n in range(9, -1, -1):
         btn = tk.Button(root, 
                         text=f"{n}", 
