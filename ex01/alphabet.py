@@ -39,6 +39,7 @@ def kaito():
     else:
         print("正解。具体的に何が欠損したか一文字ずつ入力せよ")
         for i in range(kesson):
-            a = input(f"{i+1}個目の欠損文字")
-            kotae.append(a)
-    return set(kotae)
+
+            a = input(f"{i}個目の欠損文字")
+            kotae.appned(a)
+    return set(kotae)        
