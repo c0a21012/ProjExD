@@ -18,20 +18,20 @@ def button_click(event):
         ans = eval(get)
         sin = math.sin(math.radians(ans))    
         entry.delete(0, tk.END)
-        entry.insert(tk.END, sin)
+        entry.insert(tk.END, round(sin, 3))
     elif n == "cos":
         get = entry.get()
         ans = eval(get)
         cos = math.cos(math.radians(ans))
         entry.delete(0, tk.END)
-        entry.insert(tk.END, cos)
+        entry.insert(tk.END, round(cos, 3))
     elif n == "tan":
         get = entry.get()
         ans = eval(get)
         tan = math.tan(math.radians(ans))
         entry.delete(0, tk.END)
-        entry.insert(tk.END, tan)
-        
+        entry.insert(tk.END, round(tan, 3))
+
     else:
         entry.insert(tk.END, n)
 
