@@ -10,10 +10,11 @@ def button_click(event):
         res = eval(eq)
         entry.delete(0, tk.END)
         entry.insert(tk.END, res)
+    else:
+        entry.insert(tk.END, n)
 
     #tkm.showinfo("",f"{n}ボタン押された")
-    entry.insert(tk.END, n)
-
+    
 if __name__ == "__main__":
     root = tk.Tk()
     #root.geometry("300x500")
