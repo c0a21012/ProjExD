@@ -13,20 +13,17 @@ def key_up(event):
     key = ""
 
 def start():
-    color = "red"
     if mx == 1 and my == 1:
-        canvas.create_rectangle(100, 100, 200, 200, 
-                                    fill=color)
+        canvas.create_rectangle(100, 100, 200, 200, fill="red")
 
 def goal():
-    color = "blue"
     x = random.randint(2, 13)
     y = random.randint(2, 8)
     while maze_bg[y][x] == 1:
         x = random.randint(2, 13)
         y = random.randint(2, 8)
         pass
-    canvas.create_rectangle(x*100, y*100, x*100+100, y*100+100, fill=color)
+    canvas.create_rectangle(x*100, y*100, x*100+100, y*100+100, fill="blue")
         
 
 
