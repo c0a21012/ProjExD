@@ -33,8 +33,10 @@ if __name__ == "__main__":
                        bg="black" )  
     canvas.pack()
 
-    maze_bg = mm.make_maze(15, 9)
-    print(maze_bg)
+    maze_bg = mm.make_maze(15, 9) #1:壁/0:床を表す二次元のリスト
+    #print(maze_bg)
+
+    mm.show_maze(canvas, maze_bg) #
 
     tori = tk.PhotoImage(file="fig/5.png")
     cx, cy = 300, 400
