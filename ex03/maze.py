@@ -13,11 +13,11 @@ def main_proc():
     global cx, cy
     if key == "Up":
         cy -= 20
-    elif key == "Down":
+    if key == "Down":
         cy += 20
-    elif key == "Right":
+    if key == "Right":
         cx += 20
-    elif key == "Left":
+    if key == "Left":
         cx -= 20
     canvas.coords("tori", cx, cy)
     root.after(100, main_proc)
