@@ -29,6 +29,7 @@ def goal():
     canvas.create_rectangle(x*100, y*100, x*100+100, y*100+100, fill=color)
         
 
+
 def main_proc():
     global cx, cy, mx, my, tori
     if maze_bg[my-1][mx] == 0: #一マス上が床ならば
@@ -43,6 +44,8 @@ def main_proc():
     if maze_bg[my][mx-1] == 0: #一マス左が床ならば
         if key == "Left":
             mx -= 1
+    if key == "r":
+        cx, cy = 150, 150
     
 
             
