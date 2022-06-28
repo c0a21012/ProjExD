@@ -1,4 +1,5 @@
 import tkinter as tk
+from turtle import color
 import maze_maker as mm
 
 def key_down(event):
@@ -10,18 +11,24 @@ def key_up(event):
     global key
     key = ""
 
+def start():
+    global mx, my
+    color = "pink"
+    if mx == 1 and my == 1:
+        canvas.create_rectangle(mx*100, my*100, mx*100+100, my*100+100, 
+                                    fill=color)
 def main_proc():
     global cx, cy, mx, my
-    if maze_bg[my-1][mx] == 0:
+    if maze_bg[my-1][mx] == 0: #一マス上が床ならば
         if key == "Up":
             my -= 1
-    if maze_bg[my+1][mx] == 0:
+    if maze_bg[my+1][mx] == 0: #一マス下が床ならば
         if key == "Down":
             my += 1
-    if maze_bg[my][mx+1] == 0:
+    if maze_bg[my][mx+1] == 0: #一マス右が床ならば
         if key == "Right":
             mx += 1
-    if maze_bg[my][mx-1] == 0:
+    if maze_bg[my][mx-1] == 0: #一マス左が床ならば
         if key == "Left":
             mx -= 1
     cx, cy = mx*100+50, my*100+50
@@ -35,7 +42,7 @@ if __name__ == "__main__":
     canvas = tk.Canvas(root, 
                        width=1500,
                        height=900,
-                       bg="black" )  
+                       bg="black" )
     canvas.pack()
 
     maze_bg = mm.make_maze(15, 9) #1:壁/0:床を表す二次元のリスト
@@ -45,6 +52,7 @@ if __name__ == "__main__":
 
     tori = tk.PhotoImage(file="fig/5.png")
     mx , my = 1, 1
+    start()
     cx, cy = mx * 100 + 50, my * 100 + 50
     canvas.create_image(cx, cy, image=tori, tag="tori")
 
