@@ -1,4 +1,5 @@
 import tkinter as tk
+import maze_maker as mm
 
 def key_down(event):
     global key
@@ -31,6 +32,9 @@ if __name__ == "__main__":
                        height=900,
                        bg="black" )  
     canvas.pack()
+
+    maze_bg = mm.make_maze(15, 9)
+    print(maze_bg)
 
     tori = tk.PhotoImage(file="fig/5.png")
     cx, cy = 300, 400
