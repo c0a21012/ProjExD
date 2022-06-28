@@ -6,7 +6,7 @@ import random
 def key_down(event):
     global key
     key = event.keysym
-    #print(f"{key}が押された")
+    
 
 def key_up(event):
     global key
@@ -44,9 +44,6 @@ def main_proc():
     if maze_bg[my][mx-1] == 0: #一マス左が床ならば
         if key == "Left":
             mx -= 1
-    if key == "r":
-        cx, cy = 150, 150
-    
 
             
 
@@ -65,7 +62,7 @@ if __name__ == "__main__":
     canvas.pack()
 
     maze_bg = mm.make_maze(15, 9) #1:壁/0:床を表す二次元のリスト
-    #print(maze_bg)
+    
 
     mm.show_maze(canvas, maze_bg) #
 
