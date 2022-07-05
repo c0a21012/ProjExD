@@ -35,9 +35,11 @@ def main():
     bombimg_rect_3.centerx = random.randint(0, screen_rect.width)
     bombimg_rect_3.centery = random.randint(0, screen_rect.height)
 
+
     vx_1, vy_1 = 1, 1 #練習6
     vx_2, vy_2 = 1, 1
     vx_3, vy_3 = 1, 1
+
     
     while True:
         screen_sfc.blit(bgimg_sfc, bgimg_rect)
@@ -111,10 +113,9 @@ def main():
         clock.tick(1000)
 
 def bound(rect, screen_rect):
-    '''
-    [1] rect: こうかとん　or 爆弾のRect
-    [2] screen_rect: スクリーンのRect
-    '''
+    #[1] rect: こうかとん　or 爆弾のRect
+    #[2] screen_rect: スクリーンのRect
+    
     yoko, tate = 1, 1
     if rect.left < screen_rect.left or screen_rect.right < rect.right: #領域外
         yoko = -1
