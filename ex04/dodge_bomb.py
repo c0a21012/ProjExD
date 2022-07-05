@@ -19,25 +19,16 @@ def main():
     kkimg_rect.center = 900, 400
 
     #練習5：爆弾
-    bombimg_sfc_1 = pg.Surface((40, 40)) #Surface
-    pg.draw.circle(bombimg_sfc_1, (255, 0, 0), (20, 20), 20)
-    bombimg_rect_1 = bombimg_sfc_1.get_rect()
-    bombimg_rect_1.centerx = random.randint(0, screen_rect.width)
-    bombimg_rect_1.centery = random.randint(0, screen_rect.height)
-    bombimg_sfc_2 = pg.Surface((40, 40)) #Surface
-    pg.draw.circle(bombimg_sfc_2, (0, 255, 0), (20, 20), 20)
-    bombimg_rect_2 = bombimg_sfc_2.get_rect()
-    bombimg_rect_2.centerx = random.randint(0, screen_rect.width)
-    bombimg_rect_2.centery = random.randint(0, screen_rect.height)
-    bombimg_sfc_3 = pg.Surface((40, 40)) #Surface
-    pg.draw.circle(bombimg_sfc_3, (0, 0, 255), (20, 20), 20)
-    bombimg_rect_3 = bombimg_sfc_3.get_rect()
-    bombimg_rect_3.centerx = random.randint(0, screen_rect.width)
-    bombimg_rect_3.centery = random.randint(0, screen_rect.height)
+    bombimg_sfc = pg.Surface((20, 20)) #Surface
+    pg.draw.circle(bombimg_sfc, (255, 0, 0), (10, 10), 10)
+    bombimg_rect = bombimg_sfc.get_rect()
+    bombimg_rect.centerx = random.randint(0, screen_rect.width)
+    bombimg_rect.centery = random.randint(0, screen_rect.height)
+    
+    
 
-    vx_1, vy_1 = 1, 1 #練習6
-    vx_2, vy_2 = 1, 1
-    vx_3, vy_3 = 1, 1
+    vx, vy = 1, 1 #練習6
+    
     
     while True:
         screen_sfc.blit(bgimg_sfc, bgimg_rect)
@@ -69,43 +60,16 @@ def main():
             
         screen_sfc.blit(kkimg_sfc, kkimg_rect)
         
-        bombimg_rect_1.move_ip(vx_1, vy_1)
-        bombimg_rect_2.move_ip(vx_2, vy_2)
-        bombimg_rect_3.move_ip(vx_3, vy_3)
+        bombimg_rect.move_ip(vx, vy)
         
-        screen_sfc.blit(bombimg_sfc_1, bombimg_rect_1)
-        screen_sfc.blit(bombimg_sfc_2, bombimg_rect_2)
-        screen_sfc.blit(bombimg_sfc_3, bombimg_rect_3)
+        screen_sfc.blit(bombimg_sfc, bombimg_rect)
         
-        yoko, tate = bound(bombimg_rect_1, screen_rect)
-        vx_1 *= yoko
-        vy_1 *= tate
-        yoko, tate = bound(bombimg_rect_2, screen_rect)
-        vx_2 *= yoko
-        vy_2 *= tate
-        yoko, tate = bound(bombimg_rect_3, screen_rect)
-        vx_3 *= yoko
-        vy_3 *= tate  
+        yoko, tate = bound(bombimg_rect, screen_rect)
+        vx *= yoko
+        vy *= tate
     
-        if kkimg_rect.colliderect(bombimg_rect_1) or kkimg_rect.colliderect(bombimg_rect_2) or kkimg_rect.colliderect(bombimg_rect_3):
+        if kkimg_rect.colliderect(bombimg_rect):
             return
-        
-        if bombimg_rect_1.colliderect(bombimg_rect_2):
-            vx_1 *= -1
-            vy_1 *= -1
-            vx_2 *= -1
-            vy_2 *= -1
-        if bombimg_rect_2.colliderect(bombimg_rect_3):
-            vx_2 *= -1
-            vy_2 *= -1
-            vx_3 *= -1
-            vy_3 *= -1
-        if bombimg_rect_3.colliderect(bombimg_rect_1):
-            vx_3 *= -1
-            vy_3 *= -1
-            vx_1 *= -1
-            vy_1 *= -1
-            
 
         pg.display.update()
         clock.tick(1000)
