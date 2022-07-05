@@ -9,7 +9,6 @@ def main():
     pg.display.set_caption("逃げろ！こうかとん")
     screen_sfc = pg.display.set_mode((1600, 900))
     screen_rect = screen_sfc.get_rect()
-    pg.image.load("fig/pg_bg.jpg")
     bgimg_sfc = pg.image.load("fig/pg_bg.jpg")
     bgimg_rect = bgimg_sfc.get_rect()
     screen_sfc.blit(bgimg_sfc, bgimg_rect)
@@ -47,16 +46,43 @@ def main():
             kkimg_rect.centerx -= 1
         if key_lst [pg.K_RIGHT] == True:#x座標を+1
             kkimg_rect.centerx += 1
+        if bound(kkimg_rect, screen_rect) != (1, 1):
+            if key_lst [pg.K_UP] == True:
+                kkimg_rect.centery += 1
+            if key_lst [pg.K_DOWN] == True:
+                kkimg_rect.centery -= 1
+            if key_lst [pg.K_LEFT] == True:
+                kkimg_rect.centerx += 1
+            if key_lst [pg.K_RIGHT] == True:
+                kkimg_rect.centerx -= 1
+            
         screen_sfc.blit(kkimg_sfc, kkimg_rect)
-
-        #練習5
-        screen_sfc.blit(bombimg_sfc, bombimg_rect)
-
         #練習6
         bombimg_rect.move_ip(vx, vy)
+        #練習5
+        screen_sfc.blit(bombimg_sfc, bombimg_rect)
+        #練習7
+        yoko, tate = bound(bombimg_rect, screen_rect)
+        vx *= yoko
+        vy *= tate
+
+        if kkimg_rect.colliderect(bombimg_rect):
+            return
 
         pg.display.update()
         clock.tick(1000)
+
+def bound(rect, screen_rect):
+    '''
+    [1] rect: こうかとん　or 爆弾のRect
+    [2] screen_rect: スクリーンのect
+    '''
+    yoko, tate = 1, 1
+    if rect.left < screen_rect.left or screen_rect.right < rect.right: #領域外
+        yoko = -1
+    if rect.top < screen_rect.top or screen_rect.bottom < rect.bottom: #領域外
+        tate = -1
+    return yoko, tate
 
 if __name__ == "__main__":
     pg.init()
